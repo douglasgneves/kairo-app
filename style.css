@@ -1,0 +1,110 @@
+/* --- [style.css] --- */
+
+/* --- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS DE COR (do Manual da Marca) --- */
+:root {
+    --azul-profundo: #0D2C54;   /* Cor Primária */
+    --verde-menta: #2EC4B6;     /* Cor Secundária / Destaque */
+    --branco-clinico: #FFFFFF; /* Neutra */
+    --cinza-medio: #A0AEC0;     /* Neutra / Texto de apoio */
+
+    /* Tipografia (do Manual da Marca) */
+    --font-titulo: 'Poppins', sans-serif;
+    --font-corpo: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--azul-profundo);
+    font-family: var(--font-corpo);
+    color: var(--branco-clinico);
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* --- CANVAS DE ANIMAÇÃO --- */
+#neural-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.container {
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100vh;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+/* --- ELEMENTOS DE TEXTO E LOGO --- */
+.brand-name, .logo-image, .slogan, .coming-soon { /* Atualizado de .logo-molar para .logo-image */
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+.brand-name {
+    font-family: var(--font-titulo);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    letter-spacing: 0.15em;
+    animation-delay: 1s;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 
+  AQUI ESTÁ A MUDANÇA:
+  A classe .logo-molar foi renomeada para .logo-image
+  e a propriedade 'fill' foi removida.
+*/
+.logo-image {
+    width: clamp(100px, 18vw, 150px); /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    filter: drop-shadow(0 0 10px var(--verde-menta)) 
+            drop-shadow(0 0 25px rgba(46, 196, 182, 0.5));
+    animation-delay: 0.5s;
+}
+
+.slogan {
+    font-weight: 400;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--cinza-medio);
+    margin-top: 1.5rem;
+    max-width: 40ch;
+    animation-delay: 1.5s;
+}
+
+.coming-soon {
+    font-weight: 600;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    color: var(--verde-menta);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
